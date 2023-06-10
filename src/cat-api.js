@@ -10,11 +10,11 @@ export function fetchBreeds() {
     apikey: API_KEY,
   });
   return fetch(`${BASE_URL}?${params}`)
-    .then(a => {
-      if (!a.ok) {
-        throw new error(a.status);
+    .then(response => {
+      if (!response.ok) {
+        throw new error(response.status);
       }
-      return a.json();
+      return response.json();
     })
     .catch(() =>
       Notiflix.Notify.failure(
@@ -25,11 +25,11 @@ export function fetchBreeds() {
 
 export function fetchCatByBreed(breedId) {
   return fetch(`${CAT_SEARCH}?breed_ids=${breedId}&api_key=${API_KEY}`)
-    .then(a => {
-      if (!a.ok) {
-        throw new error(a.status);
+    .then(response => {
+      if (!response.ok) {
+        throw new error(response.status);
       }
-      return a.json();
+      return response.json();
     })
     .catch(() => console.log());
 }
